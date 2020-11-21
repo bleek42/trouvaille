@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const LandingPage: React.FC = () => {
+const Home: React.FC = () => {
   return (
     <View>
-      <Text>landing page</Text>
+      <Text>Home</Text>
     </View>
   );
 };
 
-export default LandingPage;
+export default Home;

@@ -17,25 +17,18 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-import { NativeRouter } from 'react-router-native';
 
 import Header from './src/components/Header';
 import Navbar from './src/components/Navbar';
-import Register from './src/components/Register';
 
 declare const global: { HermesInternal: null | {} };
 
 const App = () => {
   return (
-    <NativeRouter>
-      <SafeAreaView>
-        <View>
-          <Header />
-        </View>
-        <Navbar />
-        <Register />
-      </SafeAreaView>
-    </NativeRouter>
+    <SafeAreaView>
+      <Header />
+      <Navbar />
+    </SafeAreaView>
   );
 };
 
