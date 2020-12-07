@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useCallback } from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, StyleSheet } from 'react-native';
 
 interface FormState {
   username: string | undefined;
@@ -9,6 +9,23 @@ interface FormState {
   pwMatch?: boolean;
   submitted?: boolean;
 }
+
+const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+  },
+
+  userName: {
+    fontSize: 16,
+  },
+
+  inputs: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+  },
+});
 
 const Register: React.FC = () => {
   const [form, setForm] = useState<FormState>({
@@ -29,7 +46,7 @@ const Register: React.FC = () => {
         [name]: value,
       });
     },
-    [form],
+    [],
   );
 
   // const handleSubmit = (ev: React.TouchEvent): void => {
@@ -37,12 +54,13 @@ const Register: React.FC = () => {
   // };
 
   return (
-    <View>
-      <Text>register</Text>
+    <View style={styles.container}>
+      <Text style={styles.userName}>register</Text>
       <TextInput
+        style={styles.inputs}
         ref={inputRef}
         value={form.username}
-        onChangeText={() => handleChange}
+        onChangeText={handleChange}
       />
     </View>
   );
