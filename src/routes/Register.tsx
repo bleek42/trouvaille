@@ -43,7 +43,7 @@ const Register: React.FC = () => {
     RegisterFormData
   >();
 
-  const submitAlert = (data: RegisterFormData) => {
+  const submitAlert = (data: RegisterFormData): void => {
     Alert.alert(JSON.stringify(data));
   };
 
@@ -54,7 +54,9 @@ const Register: React.FC = () => {
           <Input name="username" label="Username" />
           <Input name="email" label="Email" />
           <Input name="password" label="Password" />
-          <Button onPress={handleSubmit}>Submit</Button>
+          <Button title="register" onPress={submitAlert}>
+            Submit
+          </Button>
         </Form>
       </View>
     </KeyboardAwareScrollView>
