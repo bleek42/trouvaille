@@ -49,11 +49,11 @@ const Register: React.FC = () => {
 
   return (
     <KeyboardAwareScrollView>
-      <View>
+      <View style={styles.container}>
         <Form {...{ register, setValue, validation, errors }}>
-          <Input name="username" label="Username" />
-          <Input name="email" label="Email" />
-          <Input name="password" label="Password" />
+          <Input style={styles.userName} name="username" label="Username" />
+          <Input style={styles.inputs} name="email" label="Email" />
+          <Input style={styles.inputs} name="password" label="Password" />
           <Button title="register" onPress={submitAlert}>
             Submit
           </Button>
