@@ -18,8 +18,8 @@ import {
   StatusBar,
 } from 'react-native';
 
-import Header from './src/Header';
-import Navbar from './src/Navbar';
+import Header from './src/components/Header';
+import Navbar from './src/components/Navbar';
 
 declare const global: { HermesInternal: null | {} };
 
