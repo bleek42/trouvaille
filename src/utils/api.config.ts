@@ -3,7 +3,8 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 interface APIConfigInterface {
-  [key: string]: string | undefined;
+  endPoint: any;
+  apiKey: string | undefined;
 }
 
 const apiConfig: APIConfigInterface = {
@@ -13,7 +14,13 @@ const apiConfig: APIConfigInterface = {
 
 console.log(apiConfig);
 
-const postNewUser = async (user: string): Promise<any> => {
+interface UserInterface {
+  username: string;
+  email: string;
+  password: string;
+}
+
+const postNewUser = async (user: UserInterface): Promise<void> => {
   const req: any = {
     method: 'POST',
     headers: {
@@ -22,8 +29,9 @@ const postNewUser = async (user: string): Promise<any> => {
     body: JSON.stringify(user),
   };
   try {
-    const res = await fetch(req);
+    const res = await fetch(apiConfig.endPoint, req);
     const data = await res.json();
+    console.log(data);
     return data;
   } catch (err) {
     console.error(`error - ${err.message}`);
@@ -31,3 +39,11 @@ const postNewUser = async (user: string): Promise<any> => {
     console.assert('reached finally block of postUser!');
   }
 };
+
+const newUser = {
+  username: 'newUser177487',
+  email: 'newUser@me.com',
+  password: 'P@55werd123',
+};
+
+postNewUser(newUser);
