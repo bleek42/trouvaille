@@ -38,31 +38,31 @@ const Form = ({
 
   return (
     <>
-      {Array.isArray(children)
-        ? [...children]
-        : [children].map((child, idx) => {
-            return child.props.name
-              ? createElement(child.type, {
-                  ...{
-                    ...child.props,
-                    ref: (ev: TextInput) => {
-                      inputRef.current[idx] = ev;
-                    },
-                    onChangeText: (val: string) => {
-                      setValue(child.props.name, val, true);
-                    },
-                    onSubmitEditing: () => {
-                      inputRef.current[idx + 1]
-                        ? inputRef.current[idx + 1].focus()
-                        : inputRef.current[idx].blur();
-                    },
-                    name: child.props.name,
-                    blurOnSubmit: false,
-                    error: errors[child.props.name],
+      {(Array.isArray(children) ? [...children] : [children]).map(
+        (child, idx) => {
+          return child.props.name
+            ? createElement(child.type, {
+                ...{
+                  ...child.props,
+                  ref: (ev: TextInput) => {
+                    inputRef.current[idx] = ev;
                   },
-                })
-              : child;
-          })}
+                  onChangeText: (val: string) => {
+                    setValue(child.props.name, val, true);
+                  },
+                  onSubmitEditing: () => {
+                    inputRef.current[idx + 1]
+                      ? inputRef.current[idx + 1].focus()
+                      : inputRef.current[idx].blur();
+                  },
+                  name: child.props.name,
+                  blurOnSubmit: false,
+                  error: errors[child.props.name],
+                },
+              })
+            : child;
+        },
+      )}
     </>
   );
 };
