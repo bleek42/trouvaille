@@ -14,6 +14,7 @@ import Form from '../components/Form';
 import Input from '../components/Input';
 
 import { validation } from '../utils/validation';
+import { postNewUser } from '../utils/api.config';
 
 interface RegisterFormData {
   username: string;
@@ -43,8 +44,12 @@ const Register: React.FC = () => {
     RegisterFormData
   >();
 
-  const submitAlert = (data: RegisterFormData): void => {
-    Alert.alert(JSON.stringify(data));
+  // const submitAlert = (data: RegisterFormData): void => {
+  //   Alert.alert(JSON.stringify(data));
+  // };
+
+  const submitForm = (data: RegisterFormData) => {
+    postNewUser(data);
   };
 
   return (
@@ -54,7 +59,7 @@ const Register: React.FC = () => {
           <Input style={styles.userName} name="username" label="Username" />
           <Input style={styles.inputs} name="email" label="Email" />
           <Input style={styles.inputs} name="password" label="Password" />
-          <Button title="register" onPress={submitAlert}>
+          <Button title="register" onPress={handleSubmit(submitForm)}>
             Submit
           </Button>
         </Form>

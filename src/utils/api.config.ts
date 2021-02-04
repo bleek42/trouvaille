@@ -4,12 +4,11 @@ dotenv.config();
 
 interface APIConfigInterface {
   endPoint: any;
-  apiKey: string | undefined;
 }
 
 const apiConfig: APIConfigInterface = {
   endPoint: process.env.ENDPOINT,
-  apiKey: process.env.API_KEY,
+  // apiKey: process.env.API_KEY,
 };
 
 console.log(apiConfig);
@@ -20,16 +19,13 @@ interface UserInterface {
   password: string;
 }
 
-const postNewUser = async (user: UserInterface): Promise<void> => {
+export const postNewUser = async (user: UserInterface): Promise<void> => {
   const req: any = {
     method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiConfig.apiKey}`,
-    },
     body: JSON.stringify(user),
   };
   try {
-    const res = await fetch(apiConfig.endPoint, req);
+    const res = await fetch(`${apiConfig.endPoint}/users/new`, req);
     const data = await res.json();
     console.log(data);
     return data;
@@ -40,10 +36,10 @@ const postNewUser = async (user: UserInterface): Promise<void> => {
   }
 };
 
-const newUser = {
-  username: 'newUser177487',
-  email: 'newUser@me.com',
-  password: 'P@55werd123',
-};
+// const newUser: UserInterface = {
+//   username: 'newUser177487',
+//   email: 'newUser@me.com',
+//   password: 'P@55werd123',
+// };
 
-postNewUser(newUser);
+// postNewUser(newUser);
