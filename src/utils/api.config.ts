@@ -11,7 +11,7 @@ const apiConfig: APIConfigInterface = {
   // apiKey: process.env.API_KEY,
 };
 
-console.log(apiConfig);
+// console.log(apiConfig);
 
 interface UserInterface {
   username: string;
@@ -29,10 +29,10 @@ export const postNewUser = async (user: UserInterface): Promise<void> => {
     const data = await res.json();
     console.log(data);
     return data;
-  } catch (err) {
-    console.error(`error - ${err.message}`);
+  } catch (err: unknown) {
+    console.error(`post new user error: ${err?.toString()}`);
   } finally {
-    console.assert('reached finally block of postUser!');
+    console.info({ info: 'reached finally block of postUser!' });
   }
 };
 

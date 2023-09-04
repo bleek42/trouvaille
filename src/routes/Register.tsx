@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import {
   View,
   Text,
-  StyleSheet,
+
   Button,
   Alert,
   ScrollView,
@@ -13,31 +13,13 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import Form from '../components/Form';
 import Input from '../components/Input';
 
+import {registerStyles} from '../styles/register.style';
+
+import { type RegisterFormData } from '../interfaces';
+
 import { validation } from '../utils/validation';
 import { postNewUser } from '../utils/api.config';
 
-interface RegisterFormData {
-  username: string;
-  email: string;
-  password: string;
-}
-
-const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    justifyContent: 'flex-start',
-  },
-
-  userName: {
-    fontSize: 16,
-  },
-
-  inputs: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-  },
-});
 
 const Register: React.FC = () => {
   const { handleSubmit, register, setValue, errors } = useForm<
@@ -54,11 +36,11 @@ const Register: React.FC = () => {
 
   return (
     <KeyboardAwareScrollView>
-      <View style={styles.container}>
+      <View style={registerStyles.container}>
         <Form {...{ register, setValue, validation, errors }}>
-          <Input style={styles.userName} name="username" label="Username" />
-          <Input style={styles.inputs} name="email" label="Email" />
-          <Input style={styles.inputs} name="password" label="Password" />
+          <Input style={registerStyles.userName} name="username" label="Username" />
+          <Input style={registerStyles.inputs} name="email" label="Email" />
+          <Input style={registerStyles.inputs} name="password" label="Password" />
           <Button title="register" onPress={handleSubmit(submitForm)}>
             Submit
           </Button>
