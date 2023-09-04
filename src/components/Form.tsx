@@ -1,22 +1,6 @@
 import React, { useEffect, useRef, createElement } from 'react';
 import { TextInput } from 'react-native';
-import { ValidationRule, FieldError } from 'react-hook-form';
-
-interface ValidationMap {
-  [key: string]: ValidationRule;
-}
-
-interface ErrorMap {
-  [key: string]: FieldError | undefined;
-}
-
-interface FormProps {
-  children: JSX.Element | JSX.Element[];
-  register: ({ name }: { name: string }, validation?: ValidationRule) => void;
-  errors: ErrorMap;
-  validation: ValidationMap;
-  setValue: (name: string, value: string, validate?: boolean) => void;
-}
+import { FormProps } from '../interfaces';
 
 const Form = ({
   register,

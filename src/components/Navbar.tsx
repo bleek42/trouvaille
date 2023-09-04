@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, SafeAreaView, Button } from 'react-native';
 import { Route, Link, NativeRouter } from 'react-router-native';
 
-import Home from './routes/Home';
-import Login from './routes/Login';
-import Register from './routes/Register';
+import Home from '../routes/Home';
+import Login from '../routes/Login';
+import Register from '../routes/Register';
 
 const Navbar: React.FC = () => {
   const [toggle, setToggle] = useState<boolean>(false);
